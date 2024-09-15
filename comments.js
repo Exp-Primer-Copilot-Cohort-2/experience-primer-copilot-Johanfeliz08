@@ -1,14 +1,26 @@
 // create web server
-import express from 'express';
-var app = express();
+// 1. require express
+// 2. create an express app
+// 3. create a route to listen to GET requests to /comments
+// 4. send back some hard-coded comments as JSON
+// 5. listen on a port
+// 6. log a message to the console when the server starts
 
-// create a route
-app.get('/comments', function (req, res) {
-    res.send('This is the comments page');
+const express = require('express');
+const app = express();
+
+app.get('/comments', (req, res) => {
+  const comments = [
+    { username: 'Todd', comment: 'lololol' },
+    { username: 'Skyler', comment: 'lmao' },
+    { username: 'Sk8erBoi', comment: 'rofl' },
+    { username: 'Katie', comment: 'haha' }
+  ];
+
+  res.json(comments);
 });
 
-// start the server
-app.listen(3000, function () {
-    console.log('Server is running on port 3000');
+app.listen(8080, () => {
+  console.log('Server listening on port 8080');
 });
 
